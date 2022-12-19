@@ -25,15 +25,16 @@ fs.createReadStream('kepler_data.csv')
     .on('end', () => {
         console.log(`${result.length} habitable planets found!`);
         console.log(result.map((planet) => {
-            planet.koi_prad = planet.koi_prad + " Earths"
-            planet.koi_srad = planet.koi_srad + " Solar Radii"
-            planet.koi_steff =  planet.koi_steff + " K"
+            let { kepler_name, koi_prad, koi_srad, koi_steff } = planet;
+            koi_prad = koi_prad + " Earths"
+            koi_srad = koi_srad + " Solar Radii"
+            koi_steff =  koi_steff + " K"
 
             return {
-                name: planet.kepler_name,
-                radius: planet.koi_prad,
-                distance: planet.koi_srad,
-                temperature: planet.koi_steff
+                name: kepler_name,
+                radius: koi_prad,
+                distance: koi_srad,
+                temperature: koi_steff
             }
         }));
     });
