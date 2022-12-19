@@ -25,6 +25,10 @@ fs.createReadStream('kepler_data.csv')
     .on('end', () => {
         console.log(`${result.length} habitable planets found!`);
         console.log(result.map((planet) => {
+            planet.koi_prad = planet.koi_prad + " Earths"
+            planet.koi_srad = planet.koi_srad + " Solar Radii"
+            planet.koi_steff =  planet.koi_steff + " K"
+
             return {
                 name: planet.kepler_name,
                 radius: planet.koi_prad,
